@@ -20,12 +20,16 @@
 </script>
 
 
-<!-- Below, toogleModal is activated with the user click -->
-<!-- The event "on:click" starts from the Modal.svelte component, and arrives here in App.svelte -->
-<!-- Now it is possible to "export an event" inside one component straight to an ancestor component (this one) -->
+<!-- Below, toogleModal is activated with the user click.
+     The event "on:click" starts from the Modal.svelte component, and arrives here in App.svelte
+     Now it is possible to "export an event" inside one component straight to an ancestor component (this one) -->
+
 <Modal message='Hello, Ninjas!' {showModal} on:click={toggleModal} />  
+
 <main>
-  <button on:click={toggleModal}>Open Modal</button>
+  <button on:click|once={toggleModal}>Open Modal</button>
+  <!-- the 'once' event modifier makes the toggleModal clickable only once, preventing new button click action -->
+
   {#each people as person (person.id)}
     <div>
       <h4>{person.name}</h4>
