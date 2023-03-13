@@ -1,10 +1,10 @@
 <script>
   import Modal from './Modal.svelte';
 
-  let showModal = false;
+  let showModal = false;                          // We create a boolean value for the "showModal" variable...
 
-  let toggleModal = () => {
-    showModal = !showModal;
+  let toggleModal = () => {                       // ...and a toogleModal function
+    showModal = !showModal;                       // when user clicks the backdrop, showmodal turns on/off
   };
 
 	let people = [
@@ -19,7 +19,11 @@
   };
 </script>
 
-<Modal message='Hello, Ninjas!' {showModal} on:click={toggleModal} />
+
+<!-- Below, toogleModal is activated with the user click -->
+<!-- The event "on:click" starts from the Modal.svelte component, and arrives here in App.svelte -->
+<!-- Now it is possible to "export an event" inside one component straight to an ancestor component (this one) -->
+<Modal message='Hello, Ninjas!' {showModal} on:click={toggleModal} />  
 <main>
   <button on:click={toggleModal}>Open Modal</button>
   {#each people as person (person.id)}
