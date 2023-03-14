@@ -19,17 +19,20 @@
   };
 </script>
 
-<Modal {showModal} on:click={toggleModal}>
+
+<Modal {showModal} on:click={toggleModal}>           <!-- Our Modal HTML starts here -->
   <!-- <h3>Add a New Ninja</h3> -->
   <form>
     <input type="text" placeholder='name'>
     <input type="text" placeholder='belt colour'>
     <button>Add Ninja</button>
   </form>
-  <div slot="title">
+  <div slot="title">                                  <!-- this slot was passed... -->
     <h3>Add a New Ninja</h3>
   </div>
-</Modal>
+</Modal>                                              <!-- Our Modal HTML ends here -->
+
+
 <main>
   <button on:click={toggleModal}>Open Modal</button>
   {#each people as person (person.id)}

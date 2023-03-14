@@ -1,4 +1,14 @@
+<!-- Props are an useful way for passing simple contents, like strings or variables.
+     However, if you want to pass whole <divs> or HTML methods, it is better to just use Slots.
+     
+     So, Slots are another way to pass dynamic content into another component.
+     We can pass them from child components to ancestor components with or without specifications.
+-->
+
 <script>
+    import App from "./App.svelte";
+
+
   export let showModal = false;
   export let isPromo = false;
 </script>
@@ -6,11 +16,13 @@
 {#if showModal}        <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
-      <slot name="title">
-        <h3>Default Title</h3>
-      </slot>
-      <slot></slot>
-    </div>
+      
+      <slot name="title">            <!-- This is a Named Slot. -->        
+        <h3>Default Title</h3>       <!-- It looks specifically for anything related with the defined name... -->
+      </slot>                        <!-- ... and outputs it here, where the slot is. -->     
+
+      <slot></slot>      <!-- This anonymous Slot looks for any child content inside the Modal in App.svelte. -->
+    </div>               <!-- Those contents are gonna be output right here where the slot is.   -->   
   </div>
 {/if}
 
