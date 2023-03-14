@@ -2,6 +2,8 @@
      Event forwarding example: let's export showModal to our App.svelte component.
      This allows us to use a reference here, pointing to a variable inside the ancestor component (App.svelte).
 
+     ----------------------------------------
+
      Event modifier: useful when we want to easiyl change how we react to certain events (like submit events).
      You must use it with a pipe. For example, click:on|self={...}
      
