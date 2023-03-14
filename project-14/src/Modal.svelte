@@ -3,7 +3,7 @@
   export let isPromo = false;
 </script>
 
-{#if showModal}
+{#if showModal}        <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
       <slot name="title">
