@@ -2,8 +2,8 @@
   export let showModal = false;
   export let isPromo = false;
 </script>
-
-{#if showModal}
+ 
+{#if showModal}   
   <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
       <slot></slot>
