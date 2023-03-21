@@ -50,6 +50,10 @@
         <p><strong>MASTER NINJA</strong></p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt.</p>
+
+      <!-- added this little Javascript trick to display person skills inside the modal -->
+      <p>Skills: {person.skills.join(', ')}</p>        
+      
       <button on:click={(e) => handleClick(e, person.id)}>delete</button>
     </div>
   {:else}
