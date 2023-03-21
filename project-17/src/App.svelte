@@ -1,6 +1,6 @@
 <script>
   import Modal from './Modal.svelte';
-  import AddPersonForm from './AddPersonForm.svelte';
+  import AddPersonForm from './AddPersonForm.svelte';      
 
   let showModal = false;
 
@@ -14,21 +14,31 @@
     // { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
   ];
 
-  const handleClick = (e, id) => {
+  const handleClick = (e, id) => {                
     people = people.filter(person => person.id != id);
     console.log(e);
   };
 
-  const addPerson = (e) => {
-    //console.log(e.detail);
-    const person = e.detail;
-    people = [person, ...people];
+  // See full explanation of the function below in the following comments along the code.
+  const addPerson = (e) => {       // The argument 'e' contains all implicit data which is passed through it. 
+    //console.log(e.detail);       // All function data can be accessed within 'e.detail' (see the console).
+    
+    // REMEMBER: Svelte can only update a vector by explicitly reassigning it. So, let's do this trick below:
+    const person = e.detail;       // A new variable now holds all the 'e.detail' content.
+    people = [person, ...people];  // Update 'people' list by adding it first + the old 'people' list after.
+    // The use of 'spread' operator (...) inserts the old contents of each old instance list into the new list.
+
+    // Finally, we need to close the modal window after clicking 'ok'. For that, we can simply do this:
     showModal = false;
   };
 </script>
 
-<Modal {showModal} on:click={toggleModal}>
-  <AddPersonForm on:addPerson={addPerson} />
+<!-- Our AddPersonForm component lies inside our Modal component. -->
+<!-- Notice how we add our custom 'addPerson' function, created inside AddPersonForm. -->
+<!-- When a person is added, it will react to the addPerson function created above. -->      
+
+<Modal {showModal} on:click={toggleModal}>       
+  <AddPersonForm on:addPerson={addPerson} />     <!-- This will trigger inside the Modal component. -->
 </Modal>
 
 <main>

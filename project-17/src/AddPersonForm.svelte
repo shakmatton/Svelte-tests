@@ -1,21 +1,32 @@
-<script>
-  import { createEventDispatcher } from 'svelte';
+<!-- 
+  
+  Now, we'll create here a Custom Event Dispatcher.
+  Although "Event Forwarding" can pass a function to our ancestor component, it can't do it with our data.
+  That's why we'll create a custom event, passing our 'Persons' as objects to be handled in App.svelte.
 
-  let dispatch = createEventDispatcher();
+-->
+
+<script>
+  import { createEventDispatcher } from 'svelte';       // We have to import the createEventDispatcher here.
+
+  let dispatch = createEventDispatcher();               // Now we store the imported function in 'dispatch'.
+
   let name;
   let beltColour;
   let age;
   let skills = [];
 
-  const handleSubmit = () => {
-    const person = {
-      name, 
-      beltColour,
+  const handleSubmit = () => {        // Now we adjust our handleSubmit() function with the 'person' object.
+    const person = {                   
+      name,                           // This is the Javascript way of simplifying 'name: name'...
+      beltColour,                     // ... 'beltColour: beltColour', 'age: age' and so on.
       age, 
       skills,
-      id: Math.random()  
+      id: Math.random()               
+      // id: Date.now().toString()    // This could be more accurate than using Math.random(). Test it later!
     }
-    dispatch('addPerson', person);
+    
+    dispatch('addPerson', person);    // Finally, we dispatch our custom event name, plus our created 'person'.
   };
 </script>
 
