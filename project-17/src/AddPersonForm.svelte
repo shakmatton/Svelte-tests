@@ -19,13 +19,13 @@
   const handleSubmit = () => {        // Now we adjust our handleSubmit() function with the 'person' object.
     const person = {                   
       name,                           // This is the Javascript way of simplifying 'name: name'...
-      beltColour,                     // ... 'beltColour: beltColour', 'age: age' and so on.
+      beltColour,                     // ... 'beltColour: beltColour', 'age: age', skills: skills and so on.
       age, 
       skills,
       id: Math.random()               
       // id: Date.now().toString()    // This could be more accurate than using Math.random(). Test it later!
     }
-    
+
     dispatch('addPerson', person);    // Finally, we dispatch our custom event name, plus our created 'person'.
   };
 </script>
